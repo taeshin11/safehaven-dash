@@ -1,3 +1,5 @@
+import { VisitorCounter } from './VisitorCounter';
+
 export function Footer() {
   return (
     <footer className="border-t border-black/5 bg-white py-8 dark:border-white/10 dark:bg-[#0F172A]">
@@ -23,7 +25,7 @@ export function Footer() {
             <p className="text-xs text-[#94A3B8] dark:text-[#64748B]">
               &copy; {new Date().getFullYear()} SafeHaven Dash. All rights reserved.
             </p>
-            {/* Visitor counter will go here (F7) */}
+            <VisitorCounter />
           </div>
         </div>
       </div>

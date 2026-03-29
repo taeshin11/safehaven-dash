@@ -3,6 +3,9 @@
 import useSWR from 'swr';
 import { AssetCard } from './AssetCard';
 import { FearGauge } from './FearGauge';
+import { CalculateFearScore } from './CalculateFearScore';
+import { AdSlot } from './AdSlot';
+import { Methodology } from './Methodology';
 import { SkeletonCard, SkeletonGauge } from './SkeletonCard';
 import type { AssetPrice, FearGaugeData } from '@/lib/types';
 
@@ -21,6 +24,11 @@ export function Dashboard() {
 
   return (
     <main className="mx-auto w-full max-w-[1280px] flex-1 px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+      {/* H1 for SEO — visible and keyword-rich */}
+      <h1 className="mb-8 text-center font-[family-name:var(--font-heading)] text-3xl font-bold text-[#1E293B] dark:text-[#F1F5F9] sm:mb-12 sm:text-4xl">
+        Safe Haven Currency &amp; Gold Tracker
+      </h1>
+
       {/* Fear Gauge — Hero Section */}
       <section className="mb-8 sm:mb-12">
         {fearError ? (
@@ -34,16 +42,13 @@ export function Dashboard() {
         )}
       </section>
 
-      {/* Ad placeholder — between sections */}
-      <section className="mb-8 sm:mb-12">
-        {/* ADSTERRA: replace with your native ad unit code after dashboard approval */}
-        <div className="hidden sm:block" />
-      </section>
+      {/* Adsterra Native Ad — between Fear Gauge and Asset Cards (hidden on mobile first viewport) */}
+      <AdSlot type="native" className="mb-8 hidden sm:block sm:mb-12" />
 
       {/* Asset Price Cards */}
       <section>
         <h2 className="mb-6 font-[family-name:var(--font-heading)] text-lg font-bold text-[#1E293B] dark:text-[#F1F5F9]">
-          Safe Haven Assets
+          Live Safe Haven Prices
         </h2>
         {pricesError ? (
           <div className="rounded-2xl border border-[#EF4444]/20 bg-[#EF4444]/5 p-8 text-center text-sm text-[#EF4444]">
@@ -63,6 +68,22 @@ export function Dashboard() {
           </div>
         )}
       </section>
+
+      {/* Interactive Section — Calculate Fear Score */}
+      <section className="mt-8 sm:mt-12">
+        <CalculateFearScore />
+      </section>
+
+      {/* Adsterra Banner Ad — 728x90 desktop / 320x50 mobile */}
+      <AdSlot type="banner" className="mt-8 sm:mt-12" />
+
+      {/* Methodology Accordion */}
+      <section id="methodology" className="mt-8 sm:mt-12">
+        <Methodology />
+      </section>
+
+      {/* Adsterra Social Bar — floating */}
+      <AdSlot type="social-bar" />
     </main>
   );
 }

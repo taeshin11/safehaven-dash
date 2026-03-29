@@ -1,2 +1,8 @@
 [2026-03-29 11:00] Session started. PRD read. Bootstrap files created. Starting F1: Project Scaffold & CI/CD.
 [2026-03-29 15:10] F1 DONE. Next.js 16 + Tailwind + TypeScript scaffolded. GitHub repo: taeshin11/safehaven-dash. Vercel live: safehaven-dash.vercel.app. Starting F2.
+[2026-03-29 15:25] F2+F3+F4 DONE. Layout shell, asset cards with sparklines, Fear Gauge with animated SVG. Build passes. Pushed M2+M3.
+[2026-03-29 15:40] F5 DONE. Calculate Fear Score form with asset selection, Google Sheets webhook integration, toast notifications, privacy notice.
+[2026-03-29 15:42] F6 DONE. Adsterra ad slots (banner, native, social bar) with async loading, env-var driven, placeholder when no keys.
+[2026-03-29 15:45] F7 DONE. Visitor counter with /api/visitors route, session dedup, footer placement.
+[2026-03-29 15:48] F8 DONE. SEO meta tags, JSON-LD, OG image, sitemap.xml, robots.txt, 404 page, keyword-rich H1.
+[2026-03-29 15:50] Starting F9: Final polish + production deploy.

@@ -33,7 +33,72 @@ export const metadata: Metadata = {
     'dollar index live',
     'fear gauge market',
     'USD CHF JPY gold dashboard',
+    'safe haven assets tracker',
+    'market fear gauge',
+    'gold vs dollar chart',
+    'CHF JPY strength indicator',
+    'safe haven currency tracker',
   ],
+  metadataBase: new URL('https://safehaven-dash.vercel.app'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Gold Price & Safe Haven Dashboard | Fear Gauge Live',
+    description:
+      'Track gold, USD index, CHF, JPY in real-time. Free safe-haven dashboard with live Fear Gauge.',
+    url: 'https://safehaven-dash.vercel.app',
+    siteName: 'SafeHaven Dash',
+    type: 'website',
+    locale: 'en_US',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'SafeHaven Dash — Gold & Safe Haven Currency Dashboard with Fear Gauge',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Gold Price & Safe Haven Dashboard | Fear Gauge Live',
+    description:
+      'Track gold, USD index, CHF, JPY in real-time. Free safe-haven dashboard with live Fear Gauge.',
+    images: ['/og-image.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
+
+// JSON-LD Structured Data
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'SafeHaven Dash',
+  description:
+    'Free real-time dashboard tracking gold, USD index, CHF, JPY with a custom Fear Gauge index for safe-haven asset monitoring.',
+  url: 'https://safehaven-dash.vercel.app',
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Web',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  creator: {
+    '@type': 'Organization',
+    name: 'SafeHaven Dash',
+  },
 };
 
 export default function RootLayout({
@@ -47,6 +112,12 @@ export default function RootLayout({
       className={`${dmSans.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} h-full`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col antialiased">{children}</body>
     </html>
   );
