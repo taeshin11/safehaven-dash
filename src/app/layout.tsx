@@ -27,6 +27,11 @@ export const metadata: Metadata = {
   verification: {
     google: 'WddgcbVJsL2BGHNAje5m6DK56IcR0Mw5UOqozI2Xtrc',
   },
+  other: {
+    'msvalidate.01': '',
+    'naver-site-verification': '',
+  },
+  category: 'Finance',
   title: 'Gold Price & Safe Haven Dashboard | Fear Gauge Live — SafeHaven Dash',
   description:
     'Track gold, USD index, CHF, JPY in real-time. Free safe-haven dashboard with live Fear Gauge. See if markets are calm or panicking.',

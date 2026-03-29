@@ -3,6 +3,7 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Dashboard } from '@/components/Dashboard';
+import { FeedbackWidget } from '@/components/FeedbackWidget';
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <Dashboard />
       </ErrorBoundary>
       <Footer />
+      <FeedbackWidget />
     </ThemeProvider>
   );
 }

@@ -20,9 +20,76 @@ export const metadata: Metadata = {
   },
 };
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: "Is SafeHaven Dash really free? What's the catch?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, SafeHaven Dash is 100% free to use with no registration required. We sustain the service through non-intrusive advertising. Our entire infrastructure runs on free-tier services, so our operating cost is $0/month.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How often is the data updated?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Price data is refreshed from our API providers every 5 minutes on the server side, and the dashboard automatically fetches the latest data every 60 seconds on the client side.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the Fear Gauge and how accurate is it?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The Fear Gauge is a proprietary composite index that combines 24-hour price changes in Gold, DXY, CHF, and JPY using a weighted formula (35%, 25%, 20%, 20%). It is a directional indicator of safe-haven demand, normalized to a 0-100 scale.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I use SafeHaven Dash on my phone?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. SafeHaven Dash is built mobile-first and works on any device from 320px screens to 4K monitors. Dark mode is fully supported and respects your system preference.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: "Why don't I see the USD Index (DXY) on other free sites?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The DXY is typically proprietary. SafeHaven Dash computes it synthetically from individual currency pairs using the official ICE basket weights, closely approximating the official DXY value.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What happens if the data APIs go down?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We built a multi-provider fallback system. All API responses are cached for 5 minutes. If data is stale, a "Delayed" badge appears on the affected asset card.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is this financial advice?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. SafeHaven Dash is an informational tool only. The Fear Gauge is an educational indicator, not a trading signal. Always consult a qualified financial advisor.',
+      },
+    },
+  ],
+};
+
 export default function HowToUsePage() {
   return (
     <div className="mx-auto w-full max-w-[800px] px-4 py-12 sm:px-6 lg:px-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <h1 className="font-[family-name:var(--font-heading)] text-3xl font-bold text-[#1E293B] dark:text-[#F1F5F9] sm:text-4xl">
         How to Use SafeHaven Dash
       </h1>
