@@ -4,10 +4,11 @@ import { useEffect, useState } from 'react';
 import type { FearGaugeData } from '@/lib/types';
 import { getFearColor, FEAR_THRESHOLDS, COLORS } from '@/lib/constants';
 
+// Use static Tailwind classes — dynamic interpolation doesn't work at build time
 function getGaugeBg(score: number): string {
-  if (score <= FEAR_THRESHOLDS.CALM_MAX) return `bg-[${COLORS.calm}]/10`;
-  if (score <= FEAR_THRESHOLDS.CAUTIOUS_MAX) return `bg-[${COLORS.caution}]/10`;
-  return `bg-[${COLORS.fear}]/10`;
+  if (score <= FEAR_THRESHOLDS.CALM_MAX) return 'bg-[#22C55E]/10';
+  if (score <= FEAR_THRESHOLDS.CAUTIOUS_MAX) return 'bg-[#F59E0B]/10';
+  return 'bg-[#EF4444]/10';
 }
 
 export function FearGauge({ data }: { data: FearGaugeData }) {

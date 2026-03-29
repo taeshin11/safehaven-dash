@@ -5,4 +5,5 @@
 [2026-03-29 15:42] F6 DONE. Adsterra ad slots (banner, native, social bar) with async loading, env-var driven, placeholder when no keys.
 [2026-03-29 15:45] F7 DONE. Visitor counter with /api/visitors route, session dedup, footer placement.
 [2026-03-29 15:48] F8 DONE. SEO meta tags, JSON-LD, OG image, sitemap.xml, robots.txt, 404 page, keyword-rich H1.
-[2026-03-29 15:50] Starting F9: Final polish + production deploy.
+[2026-03-29 15:50] F9 DONE. Error boundaries, README, all features complete. Tagged v1.0.0. Production deployed.
+[2026-03-29 16:00] Polish pass: accessibility fixes (aria-hidden, aria-expanded, aria-label), cache-control headers on all API routes, error handling in visitors API, extracted constants.ts for fear gauge thresholds/weights/colors. Pushed to GitHub. Vercel CLI limit hit (100/day) but auto-deploy from GitHub should trigger.

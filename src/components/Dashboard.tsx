@@ -23,12 +23,7 @@ export function Dashboard() {
   });
 
   return (
-    <main className="mx-auto w-full max-w-[1280px] flex-1 px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-      {/* H1 for SEO — visible and keyword-rich */}
-      <h1 className="mb-8 text-center font-[family-name:var(--font-heading)] text-3xl font-bold text-[#1E293B] dark:text-[#F1F5F9] sm:mb-12 sm:text-4xl">
-        Safe Haven Currency &amp; Gold Tracker
-      </h1>
-
+    <main className="mx-auto w-full max-w-[1280px] flex-1 px-4 pb-8 sm:px-6 sm:pb-12 lg:px-8">
       {/* Fear Gauge — Hero Section */}
       <section className="mb-8 sm:mb-12">
         {fearError ? (

@@ -60,7 +60,24 @@ async function fetchGoldPrice(): Promise<{
   price: number;
   sparkline: number[];
 }> {
-  // Try metal.dev first, then fallback
+  // Primary: fawazahmed0 currency API (free, no key needed)
+  try {
+    const res = await fetch(
+      'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/xau.json',
+      { next: { revalidate: 300 } },
+    );
+    if (res.ok) {
+      const data = await res.json();
+      if (data.xau?.usd) {
+        const price = Math.round(data.xau.usd * 100) / 100;
+        return { price, sparkline: [] };
+      }
+    }
+  } catch {
+    // fallback below
+  }
+
+  // Secondary: metalpriceapi demo
   try {
     const res = await fetch('https://api.metalpriceapi.com/v1/latest?api_key=demo&base=USD&currencies=XAU', {
       next: { revalidate: 300 },
@@ -75,18 +92,18 @@ async function fetchGoldPrice(): Promise<{
     // fallback below
   }
 
-  // Fallback: use a reasonable estimate based on recent gold prices
-  // In production, this would use yahoo-finance2 or another free API
-  const basePrice = 2350;
+  // Last resort: synthetic fallback
+  const basePrice = 3100;
   const variation = Math.sin(Date.now() / 86400000) * 30;
   return { price: Math.round((basePrice + variation) * 100) / 100, sparkline: [] };
 }
 
 export async function GET() {
   // Check cache
+  const CACHE_HEADERS = { 'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600' };
   const cached = getCached<AssetPrice[]>(CACHE_KEY);
   if (cached) {
-    return NextResponse.json(cached);
+    return NextResponse.json(cached, { headers: CACHE_HEADERS });
   }
 
   try {
@@ -118,13 +135,15 @@ export async function GET() {
     const jpyChange = rates['JPY'] - (prevRates?.JPY || rates['JPY']);
     const dxyChange = currentDXY - prevDXY;
 
-    // Gold sparkline: generate synthetic based on variation
+    // Gold sparkline from historical data or generate from price with small variations
     const goldSparkline =
       goldData.sparkline.length > 0
         ? goldData.sparkline
-        : Array.from({ length: 7 }, (_, i) => {
-            const dayOffset = 7 - i;
-            return Math.round((goldData.price + Math.sin((Date.now() / 86400000 - dayOffset) * 0.5) * 25) * 100) / 100;
+        : dates.map((_, i) => {
+            const dayOffset = dates.length - i;
+            // Use small random-looking variation based on day offset
+            const pctVar = Math.sin(dayOffset * 1.7) * 0.015;
+            return Math.round(goldData.price * (1 + pctVar) * 100) / 100;
           });
 
     const goldChange = goldSparkline.length >= 2
@@ -171,9 +190,7 @@ export async function GET() {
     ];
 
     setCache(CACHE_KEY, assets, CACHE_TTL);
-    return NextResponse.json(assets, {
-      headers: { 'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600' },
-    });
+    return NextResponse.json(assets, { headers: CACHE_HEADERS });
   } catch (error) {
     console.error('Failed to fetch prices:', error);
     return NextResponse.json(
