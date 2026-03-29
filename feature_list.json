@@ -1,0 +1,11 @@
+[
+  { "id": "F1", "title": "Project Scaffold & CI/CD", "status": "todo", "priority": 1, "milestone": "M1", "acceptance_criteria": ["Next.js app created", "Tailwind configured", "GitHub repo via gh CLI", "Vercel deploy via CLI", "Short link created"] },
+  { "id": "F2", "title": "Responsive Layout Shell", "status": "todo", "priority": 1, "milestone": "M2", "acceptance_criteria": ["Mobile-first grid", "Soft color palette", "Dark mode toggle", "Skeleton loaders"] },
+  { "id": "F3", "title": "Live Asset Price Cards", "status": "todo", "priority": 1, "milestone": "M2", "acceptance_criteria": ["4 asset cards", "Real-time prices", "Sparkline charts", "Auto-refresh 60s"] },
+  { "id": "F4", "title": "Fear Gauge Index", "status": "todo", "priority": 1, "milestone": "M3", "acceptance_criteria": ["Gauge chart 0-100", "Weighted formula", "Color-coded zones", "Methodology tooltip"] },
+  { "id": "F5", "title": "Google Sheets Webhook", "status": "todo", "priority": 2, "milestone": "M4", "acceptance_criteria": ["Apps Script deployed via clasp", "POST on calculate click", "Success/error toast", "Privacy notice"] },
+  { "id": "F6", "title": "Adsterra Ad Integration", "status": "todo", "priority": 2, "milestone": "M5", "acceptance_criteria": ["Banner ad slot", "Native ad slot", "Social bar", "Async loading", "No UX disruption"] },
+  { "id": "F7", "title": "Visitor Counter", "status": "todo", "priority": 3, "milestone": "M6", "acceptance_criteria": ["Today + total count", "Footer placement", "Session dedup", "API route"] },
+  { "id": "F8", "title": "SEO & Performance", "status": "todo", "priority": 2, "milestone": "M7", "acceptance_criteria": ["Meta tags", "JSON-LD", "Sitemap", "Lighthouse >=90", "Keywords in H1"] },
+  { "id": "F9", "title": "Final Polish & Deploy", "status": "todo", "priority": 1, "milestone": "M8", "acceptance_criteria": ["All features done", "Responsive test passed", "Production deploy", "README complete"] }
+]
