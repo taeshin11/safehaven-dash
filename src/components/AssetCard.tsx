@@ -14,7 +14,6 @@ export function AssetCard({ asset }: { asset: AssetPrice }) {
   const isPositive = asset.changePct24h >= 0;
   const changeColor = isPositive ? 'text-[#22C55E]' : 'text-[#EF4444]';
   const sparkColor = isPositive ? '#22C55E' : '#EF4444';
-  const sparkFill = isPositive ? '#22C55E20' : '#EF444420';
 
   const chartData = asset.sparkline.map((value, i) => ({ value, index: i }));
 

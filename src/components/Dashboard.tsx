@@ -9,7 +9,11 @@ import { Methodology } from './Methodology';
 import { SkeletonCard, SkeletonGauge } from './SkeletonCard';
 import type { AssetPrice, FearGaugeData } from '@/lib/types';
 
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
+const fetcher = (url: string) =>
+  fetch(url).then((r) => {
+    if (!r.ok) throw new Error(`API error: ${r.status}`);
+    return r.json();
+  });
 
 export function Dashboard() {
   const { data: prices, error: pricesError } = useSWR<AssetPrice[]>('/api/prices', fetcher, {

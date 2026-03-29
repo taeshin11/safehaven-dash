@@ -13,7 +13,11 @@ const ASSETS = [
   { id: 'bonds', label: 'US Treasury Bonds', icon: '📊' },
 ];
 
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
+const fetcher = (url: string) =>
+  fetch(url).then((r) => {
+    if (!r.ok) throw new Error(`API error: ${r.status}`);
+    return r.json();
+  });
 
 export function CalculateFearScore() {
   const [selected, setSelected] = useState<string[]>([]);

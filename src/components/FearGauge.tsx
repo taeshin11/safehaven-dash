@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import type { FearGaugeData } from '@/lib/types';
-import { getFearColor, FEAR_THRESHOLDS, COLORS } from '@/lib/constants';
+import { getFearColor, FEAR_THRESHOLDS } from '@/lib/constants';
 
 // Use static Tailwind classes — dynamic interpolation doesn't work at build time
 function getGaugeBg(score: number): string {
