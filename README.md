@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SafeHaven Dash
 
-## Getting Started
+> Real-time Gold & Safe-Haven Currency Dashboard with Fear Gauge Index
 
-First, run the development server:
+**Live Demo:** [safehaven-dash.vercel.app](https://safehaven-dash.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Overview
+
+SafeHaven Dash is a free, ad-supported, single-page dashboard that tracks safe-haven assets (Gold, USD Index, CHF, JPY) and computes a custom "Fear Gauge" index (0-100) so anyone can see safe-haven momentum at a glance.
+
+## Features
+
+- **Live Asset Prices** — Gold (XAU/USD), USD Index (DXY), USD/CHF, USD/JPY with 7-day sparklines
+- **Fear Gauge Index** — Animated gauge (0-100) computed from weighted asset movements
+- **Dark Mode** — Full dark/light theme with system preference detection
+- **Interactive Calculator** — "Calculate Your Fear Score" with Google Sheets data collection
+- **Responsive Design** — Mobile-first, works from 320px to 4K
+- **SEO Optimized** — Meta tags, JSON-LD, sitemap, Open Graph images
+
+## Tech Stack
+
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Styling | Tailwind CSS v4 |
+| Charts | Recharts |
+| Data Fetching | SWR (client) + server-side caching |
+| Hosting | Vercel (free tier) |
+| APIs | Frankfurter API (FX rates), Metal Price API (Gold) |
+| Ads | Adsterra (banner, native, social bar) |
+
+## Architecture
+
+```
+src/
+├── app/
+│   ├── api/
+│   │   ├── prices/          # Asset price API with multi-provider fallback
+│   │   ├── fear-gauge/      # Fear Gauge computation
+│   │   └── visitors/        # Visitor counter
+│   ├── layout.tsx           # Root layout with SEO metadata + JSON-LD
+│   ├── page.tsx             # Main dashboard page
+│   ├── sitemap.ts           # Auto-generated sitemap
+│   ├── robots.ts            # Robots.txt
+│   ├── not-found.tsx        # Custom 404 page
+│   └── opengraph-image.tsx  # Dynamic OG image (1200x630)
+├── components/
+│   ├── Dashboard.tsx        # Main dashboard orchestrator
+│   ├── FearGauge.tsx        # Animated SVG gauge (0-100)
+│   ├── AssetCard.tsx        # Price card with Recharts sparkline
+│   ├── CalculateFearScore.tsx # Interactive fear score calculator
+│   ├── Header.tsx           # Sticky header + dark mode toggle
+│   ├── Footer.tsx           # Footer + visitor count
+│   ├── AdSlot.tsx           # Adsterra ad integration
+│   ├── Methodology.tsx      # Fear Gauge methodology accordion
+│   ├── ThemeProvider.tsx     # Dark mode context
+│   ├── ErrorBoundary.tsx    # Error boundary
+│   └── SkeletonCard.tsx     # Loading skeletons
+├── lib/
+│   ├── types.ts             # TypeScript interfaces
+│   └── cache.ts             # In-memory API cache (5-min TTL)
+└── scripts/
+    └── apps-script/         # Google Apps Script for Sheets webhook
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+git clone https://github.com/taeshin11/safehaven-dash.git
+cd safehaven-dash
+npm install && npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Variables
 
-## Learn More
+```env
+# Optional — Google Sheets webhook
+NEXT_PUBLIC_SHEETS_WEBHOOK_URL=
 
-To learn more about Next.js, take a look at the following resources:
+# Optional — Adsterra ad keys
+NEXT_PUBLIC_ADSTERRA_BANNER_KEY=
+NEXT_PUBLIC_ADSTERRA_NATIVE_KEY=
+NEXT_PUBLIC_ADSTERRA_SOCIAL_KEY=
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Ad Integration Guide
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Adsterra** (primary) — Sign up at adsterra.com, create ad units, add keys to env vars
+2. **Google AdSense** (secondary) — Higher CPMs long-term but slower approval
+3. **Carbon Ads** (tertiary) — Developer audience alternative
 
-## Deploy on Vercel
+## Fear Gauge Formula
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+fear_score = 0.35 * gold_24h_change%
+           + 0.25 * dxy_24h_change%
+           + 0.20 * chf_strength%
+           + 0.20 * jpy_strength%
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Normalized to 0-100: Calm (0-30) | Cautious (31-60) | Fear (61-100)
+```
+
+## Deployment
+
+```bash
+vercel --prod
+```
+
+## License
+
+MIT
