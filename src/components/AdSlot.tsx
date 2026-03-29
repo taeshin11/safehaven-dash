@@ -13,42 +13,62 @@ export function AdSlot({ type, className = '' }: AdSlotProps) {
 
   useEffect(() => {
     if (loaded.current || !containerRef.current) return;
-
-    const keys: Record<string, string | undefined> = {
-      banner: process.env.NEXT_PUBLIC_ADSTERRA_BANNER_KEY,
-      native: process.env.NEXT_PUBLIC_ADSTERRA_NATIVE_KEY,
-      'social-bar': process.env.NEXT_PUBLIC_ADSTERRA_SOCIAL_KEY,
-    };
-
-    const key = keys[type];
-    if (!key) return; // No key configured yet
-
-    const script = document.createElement('script');
-    script.src = `//www.highperformanceformat.com/${key}/invoke.js`;
-    script.async = true;
-
-    const container = document.createElement('div');
-    container.id = `container-${key}`;
-
-    containerRef.current.appendChild(container);
-    containerRef.current.appendChild(script);
     loaded.current = true;
+
+    const el = containerRef.current;
+
+    if (type === 'banner') {
+      // Desktop banner (728x90) — hidden on mobile
+      const desktopWrapper = document.createElement('div');
+      desktopWrapper.className = 'hidden sm:block';
+      const desktopScript1 = document.createElement('script');
+      desktopScript1.textContent = `atOptions = { 'key': 'f985593859378f2f01d535d7e9c28751', 'format': 'iframe', 'height': 90, 'width': 728, 'params': {} };`;
+      const desktopScript2 = document.createElement('script');
+      desktopScript2.src = 'https://www.highperformanceformat.com/f985593859378f2f01d535d7e9c28751/invoke.js';
+      desktopScript2.async = true;
+      desktopWrapper.appendChild(desktopScript1);
+      desktopWrapper.appendChild(desktopScript2);
+
+      // Mobile banner (320x50) — hidden on desktop
+      const mobileWrapper = document.createElement('div');
+      mobileWrapper.className = 'sm:hidden';
+      const mobileScript1 = document.createElement('script');
+      mobileScript1.textContent = `atOptions = { 'key': '8d8cc6bfda7b1fd7b38162de3721a861', 'format': 'iframe', 'height': 50, 'width': 320, 'params': {} };`;
+      const mobileScript2 = document.createElement('script');
+      mobileScript2.src = 'https://www.highperformanceformat.com/8d8cc6bfda7b1fd7b38162de3721a861/invoke.js';
+      mobileScript2.async = true;
+      mobileWrapper.appendChild(mobileScript1);
+      mobileWrapper.appendChild(mobileScript2);
+
+      el.appendChild(desktopWrapper);
+      el.appendChild(mobileWrapper);
+    }
+
+    if (type === 'native') {
+      // Native ad between sections
+      const container = document.createElement('div');
+      container.id = 'container-98bd9fc9a085f3a99ed588a9156418e2';
+      const script = document.createElement('script');
+      script.src = 'https://pl29009361.profitablecpmratenetwork.com/98bd9fc9a085f3a99ed588a9156418e2/invoke.js';
+      script.async = true;
+      script.setAttribute('data-cfasync', 'false');
+      el.appendChild(container);
+      el.appendChild(script);
+    }
+
+    if (type === 'social-bar') {
+      // Social bar — floating push notification style
+      const script = document.createElement('script');
+      script.src = 'https://pl29009362.profitablecpmratenetwork.com/e7/d2/c2/e7d2c2c42c642f82173c247ae4d5e559.js';
+      script.async = true;
+      script.setAttribute('data-cfasync', 'false');
+      el.appendChild(script);
+    }
   }, [type]);
 
-  // Don't render anything if no keys are set (development/pre-approval)
-  const hasKey = type === 'banner'
-    ? process.env.NEXT_PUBLIC_ADSTERRA_BANNER_KEY
-    : type === 'native'
-      ? process.env.NEXT_PUBLIC_ADSTERRA_NATIVE_KEY
-      : process.env.NEXT_PUBLIC_ADSTERRA_SOCIAL_KEY;
-
-  if (!hasKey) {
-    // Placeholder in development
-    return (
-      <div className={`${className}`}>
-        {/* ADSTERRA: replace with your ${type} ad unit code after dashboard approval */}
-      </div>
-    );
+  // Social bar is floating — no visible container
+  if (type === 'social-bar') {
+    return <div ref={containerRef} className="hidden" />;
   }
 
   return (
@@ -56,7 +76,7 @@ export function AdSlot({ type, className = '' }: AdSlotProps) {
       <p className="mb-1 text-center text-[10px] uppercase tracking-wider text-[#94A3B8]">
         Advertisement
       </p>
-      <div ref={containerRef} />
+      <div ref={containerRef} className="flex justify-center" />
     </div>
   );
 }
