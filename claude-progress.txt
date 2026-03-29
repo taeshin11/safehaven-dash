@@ -20,3 +20,9 @@
 [2026-03-29 18:10] Google Search Console: site verified (META tag), sitemap submitted.
 [2026-03-29 18:15] IndexNow: submitted all 5 URLs to Bing/Yandex/Naver for instant indexing.
 [2026-03-29 18:20] Updated sitemap.xml to include all 5 pages with proper priorities.
+[2026-03-29 18:30] Added floating FeedbackWidget (chat bubble → mailto) on all pages.
+[2026-03-29 18:35] Added FAQPage JSON-LD schema to /how-to-use for Google rich results.
+[2026-03-29 18:40] Fixed 404 page with proper noindex meta.
+[2026-03-29 19:00] Google Apps Script: Created custom OAuth2 flow to get proper scopes. Created project, pushed code, deployed as web app via REST API. Webhook live and tested: https://script.google.com/macros/s/AKfycbyxfH_jzXVMVh_dmdlXIlHVo1t9Tie_CSka_mdiITZRTcyK_4-yEYpkPHD24d0CZyiy4g/exec
+[2026-03-29 19:05] NEXT_PUBLIC_SHEETS_WEBHOOK_URL added to Vercel env vars (production + development).
+[2026-03-29 19:10] ALL PRD FEATURES COMPLETE. All 9 features implemented, tested, and deployed.
