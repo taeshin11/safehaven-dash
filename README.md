@@ -2,7 +2,7 @@
 
 > Real-time Gold & Safe-Haven Currency Dashboard with Fear Gauge Index
 
-**Live Demo:** [safehaven-dash.vercel.app](https://safehaven-dash.vercel.app)
+**Live Demo:** [safehaven-dash.vercel.app](https://safehaven-dash.vercel.app) | [Short Link](https://tinyurl.com/22b5bx3j)
 
 ## Overview
 
@@ -26,7 +26,8 @@ SafeHaven Dash is a free, ad-supported, single-page dashboard that tracks safe-h
 | Charts | Recharts |
 | Data Fetching | SWR (client) + server-side caching |
 | Hosting | Vercel (free tier) |
-| APIs | Frankfurter API (FX rates), Metal Price API (Gold) |
+| APIs | Frankfurter API (FX rates), fawazahmed0 (Gold) |
+| Persistence | Upstash Redis (visitor counter, free tier) |
 | Ads | Adsterra (banner, native, social bar) |
 
 ## Architecture
@@ -58,7 +59,8 @@ src/
 │   └── SkeletonCard.tsx     # Loading skeletons
 ├── lib/
 │   ├── types.ts             # TypeScript interfaces
-│   └── cache.ts             # In-memory API cache (5-min TTL)
+│   ├── cache.ts             # In-memory API cache (5-min TTL)
+│   └── constants.ts         # Fear Gauge weights, thresholds, colors
 └── scripts/
     └── apps-script/         # Google Apps Script for Sheets webhook
 ```
@@ -81,6 +83,10 @@ NEXT_PUBLIC_SHEETS_WEBHOOK_URL=
 NEXT_PUBLIC_ADSTERRA_BANNER_KEY=
 NEXT_PUBLIC_ADSTERRA_NATIVE_KEY=
 NEXT_PUBLIC_ADSTERRA_SOCIAL_KEY=
+
+# Visitor counter persistence (Upstash Redis via Vercel KV)
+KV_REST_API_URL=
+KV_REST_API_TOKEN=
 ```
 
 ## Ad Integration Guide

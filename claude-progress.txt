@@ -7,3 +7,10 @@
 [2026-03-29 15:48] F8 DONE. SEO meta tags, JSON-LD, OG image, sitemap.xml, robots.txt, 404 page, keyword-rich H1.
 [2026-03-29 15:50] F9 DONE. Error boundaries, README, all features complete. Tagged v1.0.0. Production deployed.
 [2026-03-29 16:00] Polish pass: accessibility fixes (aria-hidden, aria-expanded, aria-label), cache-control headers on all API routes, error handling in visitors API, extracted constants.ts for fear gauge thresholds/weights/colors. Pushed to GitHub. Vercel CLI limit hit (100/day) but auto-deploy from GitHub should trigger.
+[2026-03-29 17:00] Session 2 started. Full codebase audit.
+[2026-03-29 17:10] Visitor counter upgraded to Upstash Redis (persistent via Vercel KV integration). Falls back to in-memory if no KV env vars.
+[2026-03-29 17:15] Fixed lint errors: removed unused sparkFill/COLORS, refactored ThemeProvider to useSyncExternalStore (no more setState-in-effect), added response.ok checks to SWR fetchers.
+[2026-03-29 17:20] Moved eslint-config-prettier + prettier to devDependencies. Bumped version to 1.0.0.
+[2026-03-29 17:25] Created short link: https://tinyurl.com/22b5bx3j pointing to safehaven-dash.vercel.app.
+[2026-03-29 17:30] Google Apps Script: clasp login succeeded but clasp create failed (Insufficient Permission — Apps Script API not enabled). PRD fallback: manual setup docs in scripts/apps-script/.
+[2026-03-29 17:35] Pushed to GitHub. Vercel auto-deploy triggered.
