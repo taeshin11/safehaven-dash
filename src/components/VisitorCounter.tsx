@@ -18,14 +18,14 @@ export function VisitorCounter() {
       fetch('/api/visitors', { method: 'POST' })
         .then((r) => r.json())
         .then(setData)
-        .catch(() => {});
+        .catch((err) => console.warn('Visitor counter failed:', err));
       sessionStorage.setItem('sh_visited', '1');
     } else {
       // Already visited — just read
       fetch('/api/visitors')
         .then((r) => r.json())
         .then(setData)
-        .catch(() => {});
+        .catch((err) => console.warn('Visitor counter failed:', err));
     }
   }, []);
 

@@ -171,7 +171,9 @@ export async function GET() {
     ];
 
     setCache(CACHE_KEY, assets, CACHE_TTL);
-    return NextResponse.json(assets);
+    return NextResponse.json(assets, {
+      headers: { 'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600' },
+    });
   } catch (error) {
     console.error('Failed to fetch prices:', error);
     return NextResponse.json(

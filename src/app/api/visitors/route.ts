@@ -7,25 +7,37 @@ const store: { total: number; daily: Record<string, number> } = {
   daily: {},
 };
 
+const NO_CACHE = { 'Cache-Control': 'no-cache, no-store, must-revalidate' };
+
 function getToday(): string {
   return new Date().toISOString().split('T')[0];
 }
 
 export async function GET() {
-  const today = getToday();
-  return NextResponse.json({
-    today: store.daily[today] || 0,
-    total: store.total,
-  });
+  try {
+    const today = getToday();
+    return NextResponse.json(
+      { today: store.daily[today] || 0, total: store.total },
+      { headers: NO_CACHE },
+    );
+  } catch (error) {
+    console.error('Visitor counter GET error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
 }
 
 export async function POST() {
-  const today = getToday();
-  store.total += 1;
-  store.daily[today] = (store.daily[today] || 0) + 1;
+  try {
+    const today = getToday();
+    store.total += 1;
+    store.daily[today] = (store.daily[today] || 0) + 1;
 
-  return NextResponse.json({
-    today: store.daily[today],
-    total: store.total,
-  });
+    return NextResponse.json(
+      { today: store.daily[today], total: store.total },
+      { headers: NO_CACHE },
+    );
+  } catch (error) {
+    console.error('Visitor counter POST error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
 }

@@ -36,7 +36,7 @@ export function AssetCard({ asset }: { asset: AssetPrice }) {
         <span>{Math.abs(asset.change24h).toFixed(asset.symbol === 'XAU/USD' ? 2 : 4)}</span>
         <span className="text-xs">({isPositive ? '+' : ''}{asset.changePct24h.toFixed(2)}%)</span>
       </div>
-      <div className="h-16 w-full">
+      <div className="h-16 w-full" role="img" aria-label={`${asset.name} 7-day price trend chart`}>
         {chartData.length > 1 && (
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={chartData} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>

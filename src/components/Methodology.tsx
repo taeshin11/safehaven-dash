@@ -9,12 +9,14 @@ export function Methodology() {
     <div className="rounded-2xl border border-black/5 bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] dark:border-white/10 dark:bg-[#1E293B] dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)]">
       <button
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
         className="flex w-full items-center justify-between p-6 text-left transition-colors hover:bg-black/[0.02] dark:hover:bg-white/[0.02]"
       >
         <h3 className="font-[family-name:var(--font-heading)] text-lg font-bold text-[#1E293B] dark:text-[#F1F5F9]">
           How the Fear Gauge Works
         </h3>
         <svg
+          aria-hidden="true"
           className={`h-5 w-5 shrink-0 text-[#64748B] transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
           fill="none"
           stroke="currentColor"

@@ -2,22 +2,17 @@
 
 import { useEffect, useState } from 'react';
 import type { FearGaugeData } from '@/lib/types';
-
-function getGaugeColor(score: number): string {
-  if (score <= 30) return '#22C55E';
-  if (score <= 60) return '#F59E0B';
-  return '#EF4444';
-}
+import { getFearColor, FEAR_THRESHOLDS, COLORS } from '@/lib/constants';
 
 function getGaugeBg(score: number): string {
-  if (score <= 30) return 'bg-[#22C55E]/10';
-  if (score <= 60) return 'bg-[#F59E0B]/10';
-  return 'bg-[#EF4444]/10';
+  if (score <= FEAR_THRESHOLDS.CALM_MAX) return `bg-[${COLORS.calm}]/10`;
+  if (score <= FEAR_THRESHOLDS.CAUTIOUS_MAX) return `bg-[${COLORS.caution}]/10`;
+  return `bg-[${COLORS.fear}]/10`;
 }
 
 export function FearGauge({ data }: { data: FearGaugeData }) {
   const [animatedScore, setAnimatedScore] = useState(0);
-  const color = getGaugeColor(data.score);
+  const color = getFearColor(data.score);
   const bgClass = getGaugeBg(data.score);
 
   useEffect(() => {
@@ -76,7 +71,7 @@ export function FearGauge({ data }: { data: FearGaugeData }) {
       </div>
 
       <div className="relative mx-auto mt-6 w-[200px]">
-        <svg viewBox="0 0 200 130" className="w-full">
+        <svg viewBox="0 0 200 130" className="w-full" role="img" aria-label={`Fear Gauge showing ${data.label} at ${animatedScore} out of 100`}>
           {/* Background arc */}
           <path
             d={describeArc(startAngle, endAngle)}
@@ -148,6 +143,8 @@ export function FearGauge({ data }: { data: FearGaugeData }) {
       <div className="mt-4 text-center">
         <button
           onClick={() => setShowTooltip(!showTooltip)}
+          aria-expanded={showTooltip}
+          aria-label="Show Fear Gauge calculation methodology"
           className="text-xs text-[#2563EB] transition-colors hover:text-[#1d4ed8] dark:text-[#60A5FA]"
         >
           {showTooltip ? 'Hide' : 'How is this calculated?'}

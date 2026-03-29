@@ -1,12 +1,11 @@
 import { NextResponse } from 'next/server';
 import { getCached, setCache } from '@/lib/cache';
+import { FEAR_WEIGHTS, FEAR_NORMALIZATION, getFearLabel } from '@/lib/constants';
 import type { AssetPrice, FearGaugeData } from '@/lib/types';
 
 const CACHE_KEY = 'fear-gauge';
 const CACHE_TTL = 5 * 60 * 1000;
-
-// Weights per PRD: gold=0.35, dxy=0.25, chf=0.20, jpy=0.20
-const WEIGHTS = { gold: 0.35, dxy: 0.25, chf: 0.20, jpy: 0.20 };
+const CACHE_HEADERS = { 'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600' };
 
 function computeFearScore(assets: AssetPrice[]): FearGaugeData {
   const gold = assets.find((a) => a.symbol === 'XAU/USD');
@@ -27,20 +26,14 @@ function computeFearScore(assets: AssetPrice[]): FearGaugeData {
 
   // Raw score: weighted sum of percentage changes
   const rawScore =
-    WEIGHTS.gold * goldPct +
-    WEIGHTS.dxy * dxyPct +
-    WEIGHTS.chf * chfStrength +
-    WEIGHTS.jpy * jpyStrength;
+    FEAR_WEIGHTS.gold * goldPct +
+    FEAR_WEIGHTS.dxy * dxyPct +
+    FEAR_WEIGHTS.chf * chfStrength +
+    FEAR_WEIGHTS.jpy * jpyStrength;
 
-  // Normalize to 0-100 range using sigmoid-like mapping
-  // A 2% composite move maps roughly to score 50
-  const normalized = 50 + rawScore * 25;
+  const normalized = FEAR_NORMALIZATION.baseline + rawScore * FEAR_NORMALIZATION.multiplier;
   const score = Math.max(0, Math.min(100, Math.round(normalized)));
-
-  let label: 'Calm' | 'Cautious' | 'Fear';
-  if (score <= 30) label = 'Calm';
-  else if (score <= 60) label = 'Cautious';
-  else label = 'Fear';
+  const label = getFearLabel(score);
 
   return {
     score,
@@ -57,7 +50,7 @@ function computeFearScore(assets: AssetPrice[]): FearGaugeData {
 
 export async function GET(request: Request) {
   const cached = getCached<FearGaugeData>(CACHE_KEY);
-  if (cached) return NextResponse.json(cached);
+  if (cached) return NextResponse.json(cached, { headers: CACHE_HEADERS });
 
   try {
     // Fetch prices from our own API route
@@ -70,7 +63,7 @@ export async function GET(request: Request) {
     const fearData = computeFearScore(prices);
     setCache(CACHE_KEY, fearData, CACHE_TTL);
 
-    return NextResponse.json(fearData);
+    return NextResponse.json(fearData, { headers: CACHE_HEADERS });
   } catch (error) {
     console.error('Fear gauge error:', error);
     return NextResponse.json({ error: 'Failed to compute fear gauge' }, { status: 500 });
