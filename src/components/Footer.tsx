@@ -31,6 +31,12 @@ export function Footer() {
               <a href="#methodology" className="transition-colors hover:text-[#2563EB] dark:hover:text-[#60A5FA]">
                 Methodology
               </a>
+              <Link href="/gold-price-today" className="transition-colors hover:text-[#2563EB] dark:hover:text-[#60A5FA]">
+                Gold Price
+              </Link>
+              <Link href="/market-fear-index" className="transition-colors hover:text-[#2563EB] dark:hover:text-[#60A5FA]">
+                Fear Index
+              </Link>
             </nav>
             <a
               href="mailto:taeshinkim11@gmail.com"

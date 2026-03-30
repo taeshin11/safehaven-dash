@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd';
 
 export const metadata: Metadata = {
   title: 'How to Use & FAQ — SafeHaven Dash | Gold & Fear Gauge Guide',
@@ -83,8 +84,12 @@ const faqJsonLd = {
   ],
 };
 
+const BASE = 'https://safehaven-dash.vercel.app';
+
 export default function HowToUsePage() {
   return (
+    <>
+    <BreadcrumbJsonLd items={[{ name: 'Home', url: BASE }, { name: 'How to Use', url: `${BASE}/how-to-use` }]} />
     <div className="mx-auto w-full max-w-[800px] px-4 py-12 sm:px-6 lg:px-8">
       <script
         type="application/ld+json"
@@ -232,5 +237,6 @@ export default function HowToUsePage() {
         </Link>
       </div>
     </div>
+    </>
   );
 }

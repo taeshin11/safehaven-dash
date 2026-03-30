@@ -27,9 +27,18 @@ export const metadata: Metadata = {
   verification: {
     google: 'WddgcbVJsL2BGHNAje5m6DK56IcR0Mw5UOqozI2Xtrc',
   },
+  manifest: '/manifest.json',
   other: {
     'msvalidate.01': '',
     'naver-site-verification': '',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
+    'mobile-web-app-capable': 'yes',
+  },
+  appleWebApp: {
+    capable: true,
+    title: 'SafeHaven Dash',
+    statusBarStyle: 'black-translucent',
   },
   category: 'Finance',
   title: 'Gold Price & Safe Haven Dashboard | Fear Gauge Live — SafeHaven Dash',
@@ -46,6 +55,15 @@ export const metadata: Metadata = {
     'gold vs dollar chart',
     'CHF JPY strength indicator',
     'safe haven currency tracker',
+    'gold price live chart',
+    'market fear index today',
+    'is gold going up',
+    'flight to safety indicator',
+    'gold price forecast',
+    'safe haven investment dashboard',
+    'dollar index today',
+    'japanese yen strength',
+    'swiss franc safe haven',
   ],
   metadataBase: new URL('https://safehaven-dash.vercel.app'),
   alternates: {
@@ -121,6 +139,11 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* Preconnect to external API domains for faster data loading */}
+        <link rel="preconnect" href="https://api.frankfurter.dev" />
+        <link rel="dns-prefetch" href="https://api.frankfurter.dev" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

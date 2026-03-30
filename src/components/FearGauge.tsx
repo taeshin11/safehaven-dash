@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import type { FearGaugeData } from '@/lib/types';
 import { getFearColor, FEAR_THRESHOLDS } from '@/lib/constants';
+import ShareButtons from './ShareButtons';
 
 // Use static Tailwind classes — dynamic interpolation doesn't work at build time
 function getGaugeBg(score: number): string {
@@ -138,6 +139,11 @@ export function FearGauge({ data }: { data: FearGaugeData }) {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Share buttons */}
+      <div className="flex justify-center">
+        <ShareButtons score={data.score} label={data.label} />
       </div>
 
       {/* Methodology tooltip */}

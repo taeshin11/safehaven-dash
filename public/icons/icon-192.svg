@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0F172A"/>
+      <stop offset="100%" style="stop-color:#1E293B"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4AF37"/>
+      <stop offset="100%" style="stop-color:#2563EB"/>
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="29" fill="url(#bg)"/>
+  <rect x="19" y="19" width="154" height="154" rx="19" fill="url(#bg)" stroke="url(#accent)" stroke-width="4"/>
+  <text x="96" y="92.16" font-family="system-ui,-apple-system,sans-serif" font-size="54" font-weight="700" fill="#F1F5F9" text-anchor="middle">SH</text>
+  <text x="96" y="124.80000000000001" font-family="system-ui,-apple-system,sans-serif" font-size="17" font-weight="500" fill="#D4AF37" text-anchor="middle">DASH</text>
+</svg>

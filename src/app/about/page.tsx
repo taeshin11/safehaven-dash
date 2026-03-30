@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd';
 
 export const metadata: Metadata = {
   title: 'About Us — SafeHaven Dash | Free Gold & Safe Haven Tracker',
@@ -20,8 +21,12 @@ export const metadata: Metadata = {
   },
 };
 
+const BASE = 'https://safehaven-dash.vercel.app';
+
 export default function AboutPage() {
   return (
+    <>
+    <BreadcrumbJsonLd items={[{ name: 'Home', url: BASE }, { name: 'About', url: `${BASE}/about` }]} />
     <div className="mx-auto w-full max-w-[800px] px-4 py-12 sm:px-6 lg:px-8">
       <h1 className="font-[family-name:var(--font-heading)] text-3xl font-bold text-[#1E293B] dark:text-[#F1F5F9] sm:text-4xl">
         About SafeHaven Dash
@@ -144,5 +149,6 @@ export default function AboutPage() {
         </Link>
       </div>
     </div>
+    </>
   );
 }
