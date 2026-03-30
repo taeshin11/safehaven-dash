@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "Gold Price & Safe Haven Dashboard | Fear Gauge Live — SafeHaven Dash",
+    "description": "Track gold, USD index, CHF, JPY in real-time. Free safe-haven dashboard with live Fear Gauge. See if markets are calm or panicking."
+  },
+  "header": {
+    "title": "SafeHaven Dash"
+  },
+  "fearGauge": {
+    "title": "Market Fear Level",
+    "subtitle": "Based on gold, USD, CHF, JPY movements",
+    "calm": "Calm",
+    "cautious": "Cautious",
+    "fear": "Fear",
+    "howCalculated": "How is this calculated?",
+    "hide": "Hide",
+    "methodologyTitle": "Fear Gauge Methodology",
+    "methodologyDesc": "The SafeHaven Fear Gauge combines 24-hour percentage changes in four safe-haven indicators with the following weights:",
+    "goldDesc": "Gold (XAU/USD): 35% — rising gold = more fear",
+    "dxyDesc": "USD Index (DXY): 25% — rising dollar = flight to safety",
+    "chfDesc": "CHF strength: 20% — Swiss franc strengthening = more fear",
+    "jpyDesc": "JPY strength: 20% — Japanese yen strengthening = more fear",
+    "scoreRange": "The composite score is normalized to a 0-100 scale: 0-30 (Calm), 31-60 (Cautious), 61-100 (Fear).",
+    "share": "Share:"
+  },
+  "assets": {
+    "7dayTrend": "7-day trend",
+    "delayed": "Delayed"
+  },
+  "calculator": {
+    "title": "Calculate Your Fear Score",
+    "subtitle": "Select the safe-haven assets you currently hold to see your personalized fear exposure.",
+    "gold": "Gold (XAU/USD)",
+    "usd": "USD Index (DXY)",
+    "chf": "Swiss Franc (CHF)",
+    "jpy": "Japanese Yen (JPY)",
+    "btc": "Bitcoin (BTC)",
+    "bonds": "US Treasury Bonds",
+    "currentScore": "Current Market Fear Score",
+    "holdCount": "You hold {selected} of {total} safe-haven assets",
+    "submit": "Calculate & Record",
+    "submitting": "Submitting...",
+    "submitted": "Submitted!",
+    "privacyNote": "We collect anonymous usage data to improve the service. No personal information is stored.",
+    "errorSelectOne": "Please select at least one asset.",
+    "errorAlreadySubmitted": "You have already submitted this session.",
+    "successMessage": "Your fear score has been recorded!",
+    "errorGeneric": "Something went wrong. Please try again."
+  },
+  "methodology": {
+    "title": "How the Fear Gauge Works",
+    "intro": "The SafeHaven Fear Gauge is a proprietary composite index that measures market anxiety by tracking four key safe-haven indicators in real-time.",
+    "componentsTitle": "Components & Weights",
+    "goldDetail": "Gold (XAU/USD) — 35%: Gold is the classic safe-haven asset. When gold prices rise sharply, it typically signals increased market fear and uncertainty.",
+    "dxyDetail": "USD Index (DXY) — 25%: The US Dollar Index measures the dollar against a basket of major currencies. A strengthening dollar often indicates flight to safety.",
+    "chfDetail": "Swiss Franc (CHF) — 20%: The Swiss franc is considered one of the world's safest currencies. CHF strengthening against USD signals risk aversion.",
+    "jpyDetail": "Japanese Yen (JPY) — 20%: The yen traditionally strengthens during market stress as carry trades unwind and investors seek safety.",
+    "scoreTitle": "Score Interpretation",
+    "formulaTitle": "Formula",
+    "disclaimer": "Disclaimer: The Fear Gauge is for informational purposes only and should not be considered financial advice. Past performance does not guarantee future results."
+  },
+  "footer": {
+    "disclaimer": "Data is provided for informational purposes only and should not be considered financial advice. Prices may be delayed. Always do your own research before making investment decisions.",
+    "about": "About",
+    "howToUse": "How to Use",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms",
+    "methodology": "Methodology",
+    "goldPrice": "Gold Price",
+    "fearIndex": "Fear Index",
+    "feedback": "Feedback & Suggestions",
+    "copyright": "SafeHaven Dash. All rights reserved.",
+    "today": "Today",
+    "total": "Total"
+  },
+  "feedbackWidget": {
+    "sendFeedback": "Send Feedback",
+    "thankYou": "Thank you!",
+    "sentSuccess": "Your feedback was sent successfully. We appreciate it!",
+    "suggestion": "Suggestion",
+    "bug": "Bug",
+    "loveIt": "Love it!",
+    "placeholderSuggestion": "What would you like to see improved?",
+    "placeholderBug": "What went wrong? Please describe the issue.",
+    "placeholderLove": "What do you love about SafeHaven Dash?",
+    "emailPlaceholder": "Email (optional, for follow-up)",
+    "sendButton": "Send Feedback",
+    "sending": "Sending...",
+    "emailDirect": "or email us directly at taeshinkim11@gmail.com"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "backHome": "Back to Dashboard"
+  }
+}

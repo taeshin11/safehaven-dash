@@ -3,15 +3,10 @@
 import { useState } from 'react';
 import useSWR from 'swr';
 import type { FearGaugeData } from '@/lib/types';
+import { useDict } from '@/i18n/DictionaryProvider';
 
-const ASSETS = [
-  { id: 'gold', label: 'Gold (XAU/USD)', icon: '🥇' },
-  { id: 'usd', label: 'USD Index (DXY)', icon: '💵' },
-  { id: 'chf', label: 'Swiss Franc (CHF)', icon: '🇨🇭' },
-  { id: 'jpy', label: 'Japanese Yen (JPY)', icon: '🇯🇵' },
-  { id: 'btc', label: 'Bitcoin (BTC)', icon: '₿' },
-  { id: 'bonds', label: 'US Treasury Bonds', icon: '📊' },
-];
+const ASSET_IDS = ['gold', 'usd', 'chf', 'jpy', 'btc', 'bonds'] as const;
+const ASSET_ICONS = { gold: '\u{1F947}', usd: '\u{1F4B5}', chf: '\u{1F1E8}\u{1F1ED}', jpy: '\u{1F1EF}\u{1F1F5}', btc: '\u{20BF}', bonds: '\u{1F4CA}' };
 
 const fetcher = (url: string) =>
   fetch(url).then((r) => {
@@ -20,6 +15,8 @@ const fetcher = (url: string) =>
   });
 
 export function CalculateFearScore() {
+  const { dict } = useDict();
+  const t = dict.calculator ?? {};
   const [selected, setSelected] = useState<string[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
@@ -35,14 +32,13 @@ export function CalculateFearScore() {
 
   const handleSubmit = async () => {
     if (selected.length === 0) {
-      setToast({ type: 'error', message: 'Please select at least one asset.' });
+      setToast({ type: 'error', message: t.errorSelectOne ?? 'Please select at least one asset.' });
       setTimeout(() => setToast(null), 3000);
       return;
     }
 
-    // Rate limit: 1 submission per session
     if (submitted) {
-      setToast({ type: 'error', message: 'You have already submitted this session.' });
+      setToast({ type: 'error', message: t.errorAlreadySubmitted ?? 'You have already submitted this session.' });
       setTimeout(() => setToast(null), 3000);
       return;
     }
@@ -64,9 +60,9 @@ export function CalculateFearScore() {
         });
       }
       setSubmitted(true);
-      setToast({ type: 'success', message: 'Your fear score has been recorded!' });
+      setToast({ type: 'success', message: t.successMessage ?? 'Your fear score has been recorded!' });
     } catch {
-      setToast({ type: 'error', message: 'Something went wrong. Please try again.' });
+      setToast({ type: 'error', message: t.errorGeneric ?? 'Something went wrong. Please try again.' });
     } finally {
       setSubmitting(false);
       setTimeout(() => setToast(null), 4000);
@@ -76,27 +72,27 @@ export function CalculateFearScore() {
   return (
     <section className="rounded-2xl border border-black/5 bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] dark:border-white/10 dark:bg-[#1E293B] dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] sm:p-8">
       <h2 className="font-[family-name:var(--font-heading)] text-xl font-bold text-[#1E293B] dark:text-[#F1F5F9] sm:text-2xl">
-        Calculate Your Fear Score
+        {t.title ?? 'Calculate Your Fear Score'}
       </h2>
       <p className="mt-2 text-sm text-[#64748B] dark:text-[#94A3B8]">
-        Select the safe-haven assets you currently hold to see your personalized fear exposure.
+        {t.subtitle ?? 'Select the safe-haven assets you currently hold to see your personalized fear exposure.'}
       </p>
 
       <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
-        {ASSETS.map((asset) => {
-          const isSelected = selected.includes(asset.id);
+        {ASSET_IDS.map((id) => {
+          const isSelected = selected.includes(id);
           return (
             <button
-              key={asset.id}
-              onClick={() => toggleAsset(asset.id)}
+              key={id}
+              onClick={() => toggleAsset(id)}
               className={`flex items-center gap-2 rounded-xl border px-4 py-3 text-left text-sm font-medium transition-all duration-200 ${
                 isSelected
                   ? 'border-[#2563EB] bg-[#2563EB]/5 text-[#2563EB] dark:border-[#60A5FA] dark:bg-[#60A5FA]/10 dark:text-[#60A5FA]'
                   : 'border-black/10 bg-transparent text-[#1E293B] hover:border-[#2563EB]/30 hover:bg-[#2563EB]/5 dark:border-white/10 dark:text-[#F1F5F9] dark:hover:border-[#60A5FA]/30'
               }`}
             >
-              <span className="text-lg">{asset.icon}</span>
-              <span className="truncate">{asset.label}</span>
+              <span className="text-lg">{ASSET_ICONS[id]}</span>
+              <span className="truncate">{t[id] ?? id}</span>
               {isSelected && (
                 <svg
                   className="ml-auto h-4 w-4 shrink-0"
@@ -117,14 +113,14 @@ export function CalculateFearScore() {
 
       {fearData && selected.length > 0 && (
         <div className="mt-5 rounded-xl bg-[#F8F9FB] p-4 text-center dark:bg-[#0F172A]">
-          <p className="text-sm text-[#64748B] dark:text-[#94A3B8]">Current Market Fear Score</p>
+          <p className="text-sm text-[#64748B] dark:text-[#94A3B8]">{t.currentScore ?? 'Current Market Fear Score'}</p>
           <p className="font-[family-name:var(--font-mono)] text-3xl font-bold" style={{
             color: fearData.score <= 30 ? '#22C55E' : fearData.score <= 60 ? '#F59E0B' : '#EF4444',
           }}>
             {fearData.score}
           </p>
           <p className="text-xs text-[#94A3B8]">
-            You hold {selected.length} of {ASSETS.length} safe-haven assets
+            {(t.holdCount ?? 'You hold {selected} of {total} safe-haven assets').replace('{selected}', String(selected.length)).replace('{total}', String(ASSET_IDS.length))}
           </p>
         </div>
       )}
@@ -135,10 +131,10 @@ export function CalculateFearScore() {
           disabled={submitting || submitted}
           className="rounded-xl bg-[#2563EB] px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-[#1d4ed8] hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-50 dark:bg-[#3b82f6] dark:hover:bg-[#2563EB]"
         >
-          {submitting ? 'Submitting...' : submitted ? 'Submitted!' : 'Calculate & Record'}
+          {submitting ? (t.submitting ?? 'Submitting...') : submitted ? (t.submitted ?? 'Submitted!') : (t.submit ?? 'Calculate & Record')}
         </button>
         <p id="privacy" className="text-[10px] leading-relaxed text-[#94A3B8] dark:text-[#64748B] sm:max-w-xs sm:text-right">
-          We collect anonymous usage data to improve the service. No personal information is stored.
+          {t.privacyNote ?? 'We collect anonymous usage data to improve the service. No personal information is stored.'}
         </p>
       </div>
 

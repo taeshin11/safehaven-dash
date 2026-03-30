@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import type { FearGaugeData } from '@/lib/types';
 import { getFearColor, FEAR_THRESHOLDS } from '@/lib/constants';
 import ShareButtons from './ShareButtons';
+import { useDict } from '@/i18n/DictionaryProvider';
 
 // Use static Tailwind classes — dynamic interpolation doesn't work at build time
 function getGaugeBg(score: number): string {
@@ -13,6 +14,8 @@ function getGaugeBg(score: number): string {
 }
 
 export function FearGauge({ data }: { data: FearGaugeData }) {
+  const { dict } = useDict();
+  const t = dict.fearGauge ?? {};
   const [animatedScore, setAnimatedScore] = useState(0);
   const color = getFearColor(data.score);
   const bgClass = getGaugeBg(data.score);
@@ -65,10 +68,10 @@ export function FearGauge({ data }: { data: FearGaugeData }) {
     <div className="relative rounded-2xl border border-black/5 bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] dark:border-white/10 dark:bg-[#1E293B] dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] sm:p-8">
       <div className="text-center">
         <h2 className="font-[family-name:var(--font-heading)] text-xl font-bold text-[#1E293B] dark:text-[#F1F5F9] sm:text-2xl">
-          Market Fear Level
+          {t.title ?? 'Market Fear Level'}
         </h2>
         <p className="mt-1 text-sm text-[#64748B] dark:text-[#94A3B8]">
-          Based on gold, USD, CHF, JPY movements
+          {t.subtitle ?? 'Based on gold, USD, CHF, JPY movements'}
         </p>
       </div>
 
@@ -111,7 +114,7 @@ export function FearGauge({ data }: { data: FearGaugeData }) {
             className={`mt-1 rounded-full px-3 py-0.5 text-xs font-semibold ${bgClass}`}
             style={{ color }}
           >
-            {data.label}
+            {data.label === 'Calm' ? (t.calm ?? 'Calm') : data.label === 'Cautious' ? (t.cautious ?? 'Cautious') : (t.fear ?? 'Fear')}
           </span>
         </div>
       </div>
@@ -154,26 +157,24 @@ export function FearGauge({ data }: { data: FearGaugeData }) {
           aria-label="Show Fear Gauge calculation methodology"
           className="text-xs text-[#2563EB] transition-colors hover:text-[#1d4ed8] dark:text-[#60A5FA]"
         >
-          {showTooltip ? 'Hide' : 'How is this calculated?'}
+          {showTooltip ? (t.hide ?? 'Hide') : (t.howCalculated ?? 'How is this calculated?')}
         </button>
         {showTooltip && (
           <div className="mt-3 rounded-xl bg-[#F8F9FB] p-4 text-left text-xs leading-relaxed text-[#64748B] dark:bg-[#0F172A] dark:text-[#94A3B8]">
             <p className="mb-2 font-semibold text-[#1E293B] dark:text-[#F1F5F9]">
-              Fear Gauge Methodology
+              {t.methodologyTitle ?? 'Fear Gauge Methodology'}
             </p>
             <p>
-              The SafeHaven Fear Gauge combines 24-hour percentage changes in four safe-haven
-              indicators with the following weights:
+              {t.methodologyDesc ?? 'The SafeHaven Fear Gauge combines 24-hour percentage changes in four safe-haven indicators with the following weights:'}
             </p>
             <ul className="mt-2 list-inside list-disc space-y-1">
-              <li>Gold (XAU/USD): 35% — rising gold = more fear</li>
-              <li>USD Index (DXY): 25% — rising dollar = flight to safety</li>
-              <li>CHF strength: 20% — Swiss franc strengthening = more fear</li>
-              <li>JPY strength: 20% — Japanese yen strengthening = more fear</li>
+              <li>{t.goldDesc ?? 'Gold (XAU/USD): 35% — rising gold = more fear'}</li>
+              <li>{t.dxyDesc ?? 'USD Index (DXY): 25% — rising dollar = flight to safety'}</li>
+              <li>{t.chfDesc ?? 'CHF strength: 20% — Swiss franc strengthening = more fear'}</li>
+              <li>{t.jpyDesc ?? 'JPY strength: 20% — Japanese yen strengthening = more fear'}</li>
             </ul>
             <p className="mt-2">
-              The composite score is normalized to a 0-100 scale: 0-30 (Calm), 31-60 (Cautious),
-              61-100 (Fear).
+              {t.scoreRange ?? 'The composite score is normalized to a 0-100 scale: 0-30 (Calm), 31-60 (Cautious), 61-100 (Fear).'}
             </p>
           </div>
         )}

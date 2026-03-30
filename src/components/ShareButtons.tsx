@@ -1,10 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { useDict } from '@/i18n/DictionaryProvider';
 
 const SITE_URL = 'https://safehaven-dash.vercel.app';
 
 export default function ShareButtons({ score, label }: { score: number; label: string }) {
+  const { dict } = useDict();
   const [copied, setCopied] = useState(false);
 
   const text = `Market Fear Gauge: ${score}/100 (${label}) — Track gold, USD, CHF, JPY in real-time`;
@@ -27,7 +29,7 @@ export default function ShareButtons({ score, label }: { score: number; label: s
 
   return (
     <div className="flex items-center gap-2 mt-4">
-      <span className="text-xs text-slate-500 dark:text-slate-400 mr-1">Share:</span>
+      <span className="text-xs text-slate-500 dark:text-slate-400 mr-1">{dict.fearGauge?.share ?? 'Share:'}</span>
 
       {/* Twitter/X */}
       <a

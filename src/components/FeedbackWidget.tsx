@@ -1,16 +1,19 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useDict } from '@/i18n/DictionaryProvider';
 
 type FeedbackType = 'suggestion' | 'bug' | 'love';
 
-const FEEDBACK_TYPES: { type: FeedbackType; emoji: string; label: string }[] = [
-  { type: 'suggestion', emoji: '\u{1F4A1}', label: 'Suggestion' },
-  { type: 'bug', emoji: '\u{1F41B}', label: 'Bug' },
-  { type: 'love', emoji: '\u{2764}\u{FE0F}', label: 'Love it!' },
-];
-
 export function FeedbackWidget() {
+  const { dict } = useDict();
+  const t = dict.feedbackWidget ?? {};
+
+  const FEEDBACK_TYPES: { type: FeedbackType; emoji: string; label: string }[] = [
+    { type: 'suggestion', emoji: '\u{1F4A1}', label: t.suggestion ?? 'Suggestion' },
+    { type: 'bug', emoji: '\u{1F41B}', label: t.bug ?? 'Bug' },
+    { type: 'love', emoji: '\u{2764}\u{FE0F}', label: t.loveIt ?? 'Love it!' },
+  ];
   const [open, setOpen] = useState(false);
   const [pulse, setPulse] = useState(false);
   const [feedbackType, setFeedbackType] = useState<FeedbackType>('suggestion');
@@ -85,7 +88,7 @@ export function FeedbackWidget() {
         <div className="w-80 rounded-2xl border border-black/5 bg-white p-5 shadow-xl dark:border-white/10 dark:bg-[#1E293B] animate-in slide-in-from-bottom-2 fade-in duration-200">
           <div className="flex items-center justify-between">
             <h3 className="font-[family-name:var(--font-heading)] text-sm font-bold text-[#1E293B] dark:text-[#F1F5F9]">
-              {sent ? 'Thank you!' : 'Send Feedback'}
+              {sent ? (t.thankYou ?? 'Thank you!') : (t.sendFeedback ?? 'Send Feedback')}
             </h3>
             <button
               onClick={() => setOpen(false)}
@@ -102,7 +105,7 @@ export function FeedbackWidget() {
             <div className="mt-4 text-center py-4">
               <div className="text-3xl mb-2">{'\u2705'}</div>
               <p className="text-sm text-[#64748B] dark:text-[#94A3B8]">
-                Your feedback was sent successfully. We appreciate it!
+                {t.sentSuccess ?? 'Your feedback was sent successfully. We appreciate it!'}
               </p>
             </div>
           ) : (
@@ -132,10 +135,10 @@ export function FeedbackWidget() {
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder={
                   feedbackType === 'suggestion'
-                    ? 'What would you like to see improved?'
+                    ? (t.placeholderSuggestion ?? 'What would you like to see improved?')
                     : feedbackType === 'bug'
-                      ? 'What went wrong? Please describe the issue.'
-                      : 'What do you love about SafeHaven Dash?'
+                      ? (t.placeholderBug ?? 'What went wrong? Please describe the issue.')
+                      : (t.placeholderLove ?? 'What do you love about SafeHaven Dash?')
                 }
                 required
                 rows={3}
@@ -147,7 +150,7 @@ export function FeedbackWidget() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email (optional, for follow-up)"
+                placeholder={t.emailPlaceholder ?? 'Email (optional, for follow-up)'}
                 className="mt-2 w-full rounded-xl border border-black/10 bg-[#F8F9FB] px-3 py-2 text-sm text-[#1E293B] placeholder:text-[#94A3B8] focus:border-[#2563EB] focus:outline-none focus:ring-1 focus:ring-[#2563EB] dark:border-white/10 dark:bg-[#0F172A] dark:text-[#F1F5F9]"
               />
 
@@ -163,7 +166,7 @@ export function FeedbackWidget() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                     </svg>
-                    Sending...
+                    {t.sending ?? 'Sending...'}
                   </span>
                 ) : (
                   <>
@@ -171,18 +174,17 @@ export function FeedbackWidget() {
                       <path d="M22 2L11 13" />
                       <path d="M22 2l-7 20-4-9-9-4 20-7z" />
                     </svg>
-                    Send Feedback
+                    {t.sendButton ?? 'Send Feedback'}
                   </>
                 )}
               </button>
 
-              {/* Or email directly */}
               <div className="mt-2 text-center">
                 <a
                   href="mailto:taeshinkim11@gmail.com?subject=SafeHaven Dash Feedback"
                   className="text-[10px] text-[#94A3B8] hover:text-[#2563EB] transition-colors"
                 >
-                  or email us directly at taeshinkim11@gmail.com
+                  {t.emailDirect ?? 'or email us directly at taeshinkim11@gmail.com'}
                 </a>
               </div>
             </form>

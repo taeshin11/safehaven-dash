@@ -2,6 +2,7 @@
 
 import { Area, AreaChart, ResponsiveContainer } from 'recharts';
 import type { AssetPrice } from '@/lib/types';
+import { useDict } from '@/i18n/DictionaryProvider';
 
 function formatPrice(price: number, symbol: string): string {
   if (symbol === 'XAU/USD') return `$${price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -11,6 +12,8 @@ function formatPrice(price: number, symbol: string): string {
 }
 
 export function AssetCard({ asset }: { asset: AssetPrice }) {
+  const { dict } = useDict();
+  const ta = dict.assets ?? {};
   const isPositive = asset.changePct24h >= 0;
   const changeColor = isPositive ? 'text-[#22C55E]' : 'text-[#EF4444]';
   const sparkColor = isPositive ? '#22C55E' : '#EF4444';
@@ -21,7 +24,7 @@ export function AssetCard({ asset }: { asset: AssetPrice }) {
     <div className="group relative overflow-hidden rounded-2xl border border-black/5 bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] transition-all duration-200 hover:scale-[1.02] hover:shadow-[0_4px_12px_rgba(0,0,0,0.1)] dark:border-white/10 dark:bg-[#1E293B] dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
       {asset.isDelayed && (
         <span className="absolute right-3 top-3 rounded-full bg-[#F59E0B]/10 px-2 py-0.5 text-[10px] font-medium text-[#F59E0B]">
-          Delayed
+          {ta.delayed ?? 'Delayed'}
         </span>
       )}
       <div className="mb-1 text-xs font-medium uppercase tracking-wider text-[#64748B] dark:text-[#94A3B8]">
@@ -58,7 +61,7 @@ export function AssetCard({ asset }: { asset: AssetPrice }) {
           </ResponsiveContainer>
         )}
       </div>
-      <div className="mt-1 text-[10px] text-[#94A3B8] dark:text-[#64748B]">7-day trend</div>
+      <div className="mt-1 text-[10px] text-[#94A3B8] dark:text-[#64748B]">{ta['7dayTrend'] ?? '7-day trend'}</div>
     </div>
   );
 }

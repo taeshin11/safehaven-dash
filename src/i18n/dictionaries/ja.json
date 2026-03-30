@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "金価格＆安全資産ダッシュボード | リアルタイム恐怖指数 — SafeHaven Dash",
+    "description": "金、米ドル指数、スイスフラン、日本円をリアルタイムで追跡。無料の安全資産ダッシュボードとライブ恐怖指数で市場の動向を確認しましょう。"
+  },
+  "header": {
+    "title": "SafeHaven Dash"
+  },
+  "fearGauge": {
+    "title": "市場恐怖レベル",
+    "subtitle": "金、米ドル、スイスフラン、日本円の変動に基づく",
+    "calm": "安定",
+    "cautious": "警戒",
+    "fear": "恐怖",
+    "howCalculated": "計算方法は？",
+    "hide": "非表示",
+    "methodologyTitle": "恐怖指数の算出方法",
+    "methodologyDesc": "SafeHaven恐怖指数は、4つの安全資産指標の24時間変動率を以下の加重で組み合わせます：",
+    "goldDesc": "金 (XAU/USD): 35% — 金上昇 = 恐怖増加",
+    "dxyDesc": "米ドル指数 (DXY): 25% — ドル高 = 安全資産への逃避",
+    "chfDesc": "スイスフラン強化: 20% — CHF上昇 = 恐怖増加",
+    "jpyDesc": "日本円強化: 20% — JPY上昇 = 恐怖増加",
+    "scoreRange": "総合スコアは0-100の範囲に正規化されます：0-30（安定）、31-60（警戒）、61-100（恐怖）。",
+    "share": "共有："
+  },
+  "assets": {
+    "7dayTrend": "7日間の推移",
+    "delayed": "遅延"
+  },
+  "calculator": {
+    "title": "あなたの恐怖スコアを計算",
+    "subtitle": "現在保有している安全資産を選択して、パーソナライズされた恐怖エクスポージャーを確認しましょう。",
+    "gold": "金 (XAU/USD)",
+    "usd": "米ドル指数 (DXY)",
+    "chf": "スイスフラン (CHF)",
+    "jpy": "日本円 (JPY)",
+    "btc": "ビットコイン (BTC)",
+    "bonds": "米国国債",
+    "currentScore": "現在の市場恐怖スコア",
+    "holdCount": "全{total}資産中{selected}資産を保有",
+    "submit": "計算して記録",
+    "submitting": "送信中...",
+    "submitted": "送信完了！",
+    "privacyNote": "サービス改善のため匿名の使用データを収集しています。個人情報は保存されません。",
+    "errorSelectOne": "少なくとも1つの資産を選択してください。",
+    "errorAlreadySubmitted": "このセッションでは既に送信済みです。",
+    "successMessage": "恐怖スコアが記録されました！",
+    "errorGeneric": "問題が発生しました。もう一度お試しください。"
+  },
+  "methodology": {
+    "title": "恐怖指数の仕組み",
+    "intro": "SafeHaven恐怖指数は、4つの主要な安全資産指標をリアルタイムで追跡し、市場の不安を測定する独自の複合指数です。",
+    "componentsTitle": "構成要素と加重",
+    "goldDetail": "金 (XAU/USD) — 35%：金は代表的な安全資産です。金価格が急騰すると、市場の恐怖と不確実性の高まりを示唆します。",
+    "dxyDetail": "米ドル指数 (DXY) — 25%：米ドル指数は主要通貨に対するドルの価値を測定します。ドル高は安全資産への逃避を示します。",
+    "chfDetail": "スイスフラン (CHF) — 20%：スイスフランは世界で最も安全な通貨の一つです。CHFの対ドル上昇はリスク回避を示唆します。",
+    "jpyDetail": "日本円 (JPY) — 20%：円はキャリートレードの巻き戻しと安全資産選好により、市場ストレス時に強くなる傾向があります。",
+    "scoreTitle": "スコアの解釈",
+    "formulaTitle": "計算式",
+    "disclaimer": "免責事項：恐怖指数は情報提供のみを目的としており、金融アドバイスとみなされるべきではありません。過去の実績は将来の結果を保証するものではありません。"
+  },
+  "footer": {
+    "disclaimer": "データは情報提供のみを目的としており、金融アドバイスとみなされるべきではありません。価格に遅延が生じる場合があります。投資判断は必ずご自身で調査を行ってください。",
+    "about": "概要",
+    "howToUse": "使い方",
+    "privacyPolicy": "プライバシーポリシー",
+    "terms": "利用規約",
+    "methodology": "算出方法",
+    "goldPrice": "金価格",
+    "fearIndex": "恐怖指数",
+    "feedback": "フィードバック",
+    "copyright": "SafeHaven Dash. All rights reserved.",
+    "today": "今日",
+    "total": "累計"
+  },
+  "feedbackWidget": {
+    "sendFeedback": "フィードバックを送信",
+    "thankYou": "ありがとうございます！",
+    "sentSuccess": "フィードバックが正常に送信されました。ご協力に感謝します！",
+    "suggestion": "提案",
+    "bug": "バグ",
+    "loveIt": "いいね！",
+    "placeholderSuggestion": "どのような改善を望みますか？",
+    "placeholderBug": "何が問題でしたか？詳しく教えてください。",
+    "placeholderLove": "SafeHaven Dashのどこが気に入りましたか？",
+    "emailPlaceholder": "メールアドレス（任意、フォローアップ用）",
+    "sendButton": "フィードバック送信",
+    "sending": "送信中...",
+    "emailDirect": "または taeshinkim11@gmail.com に直接メールしてください"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "description": "お探しのページは存在しないか、移動された可能性があります。",
+    "backHome": "ダッシュボードに戻る"
+  }
+}

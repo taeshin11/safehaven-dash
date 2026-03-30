@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:safehaven-dash.vercel.app)",
+      "Bash(find . -not -path ./node_modules/* -not -path ./.git/* -type f)",
+      "Bash(node scripts/generate-icons.mjs)",
+      "Bash(npm run:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(curl -s -X POST \"https://api.indexnow.org/indexnow\" -H \"Content-Type: application/json\" -d '{:*)",
+      "Bash(curl -s \"https://www.google.com/ping?sitemap=https://safehaven-dash.vercel.app/sitemap.xml\" -w \"\\\\nHTTP Status: %{http_code}\\\\n\")",
+      "Bash(curl -s \"https://www.bing.com/ping?sitemap=https://safehaven-dash.vercel.app/sitemap.xml\" -w \"\\\\nHTTP Status: %{http_code}\\\\n\")",
+      "Bash(mkdir -p \"/c/MakingApps/SafeHaven/src/app/[locale]\")",
+      "Bash(mv /c/MakingApps/SafeHaven/src/app/about \"/c/MakingApps/SafeHaven/src/app/[locale]/\")",
+      "Bash(mv /c/MakingApps/SafeHaven/src/app/how-to-use \"/c/MakingApps/SafeHaven/src/app/[locale]/\")",
+      "Bash(mv /c/MakingApps/SafeHaven/src/app/privacy \"/c/MakingApps/SafeHaven/src/app/[locale]/\")",
+      "Bash(mv /c/MakingApps/SafeHaven/src/app/terms \"/c/MakingApps/SafeHaven/src/app/[locale]/\")"
+    ]
+  }
+}

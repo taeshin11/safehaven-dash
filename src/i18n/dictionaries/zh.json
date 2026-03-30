@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "金价与避险资产仪表板 | 实时恐慌指数 — SafeHaven Dash",
+    "description": "实时追踪黄金、美元指数、瑞郎、日元。免费避险资产仪表板配备实时恐慌指数，一目了然市场情绪。"
+  },
+  "header": {
+    "title": "SafeHaven Dash"
+  },
+  "fearGauge": {
+    "title": "市场恐慌水平",
+    "subtitle": "基于黄金、美元、瑞郎、日元变动",
+    "calm": "平静",
+    "cautious": "谨慎",
+    "fear": "恐慌",
+    "howCalculated": "如何计算？",
+    "hide": "隐藏",
+    "methodologyTitle": "恐慌指数计算方法",
+    "methodologyDesc": "SafeHaven恐慌指数将四个避险资产指标的24小时变动率按以下权重组合：",
+    "goldDesc": "黄金 (XAU/USD): 35% — 金价上涨 = 恐慌加剧",
+    "dxyDesc": "美元指数 (DXY): 25% — 美元走强 = 避险情绪",
+    "chfDesc": "瑞郎走强: 20% — CHF升值 = 恐慌加剧",
+    "jpyDesc": "日元走强: 20% — JPY升值 = 恐慌加剧",
+    "scoreRange": "综合评分标准化为0-100范围：0-30（平静），31-60（谨慎），61-100（恐慌）。",
+    "share": "分享："
+  },
+  "assets": {
+    "7dayTrend": "7日趋势",
+    "delayed": "延迟"
+  },
+  "calculator": {
+    "title": "计算你的恐慌评分",
+    "subtitle": "选择你目前持有的避险资产，查看个性化的恐慌暴露度。",
+    "gold": "黄金 (XAU/USD)",
+    "usd": "美元指数 (DXY)",
+    "chf": "瑞士法郎 (CHF)",
+    "jpy": "日元 (JPY)",
+    "btc": "比特币 (BTC)",
+    "bonds": "美国国债",
+    "currentScore": "当前市场恐慌评分",
+    "holdCount": "你持有{total}种避险资产中的{selected}种",
+    "submit": "计算并记录",
+    "submitting": "提交中...",
+    "submitted": "已提交！",
+    "privacyNote": "我们收集匿名使用数据以改进服务。不存储个人信息。",
+    "errorSelectOne": "请至少选择一种资产。",
+    "errorAlreadySubmitted": "本次会话中您已提交过了。",
+    "successMessage": "您的恐慌评分已记录！",
+    "errorGeneric": "出了点问题，请重试。"
+  },
+  "methodology": {
+    "title": "恐慌指数运作方式",
+    "intro": "SafeHaven恐慌指数是一个独创的综合指数，通过实时追踪四个关键避险资产指标来衡量市场焦虑程度。",
+    "componentsTitle": "组成部分及权重",
+    "goldDetail": "黄金 (XAU/USD) — 35%：黄金是经典的避险资产。金价急剧上涨通常意味着市场恐慌和不确定性增加。",
+    "dxyDetail": "美元指数 (DXY) — 25%：美元指数衡量美元相对一篮子主要货币的价值。美元走强通常表示资金流向安全资产。",
+    "chfDetail": "瑞士法郎 (CHF) — 20%：瑞士法郎被认为是世界上最安全的货币之一。CHF相对美元走强意味着避险情绪上升。",
+    "jpyDetail": "日元 (JPY) — 20%：日元传统上在市场压力下走强，因为套利交易平仓和投资者寻求避险。",
+    "scoreTitle": "评分解读",
+    "formulaTitle": "公式",
+    "disclaimer": "免责声明：恐慌指数仅供参考，不应视为金融建议。过去的表现不保证未来的结果。"
+  },
+  "footer": {
+    "disclaimer": "数据仅供参考，不应视为金融建议。价格可能有延迟。做出投资决策前请务必自行研究。",
+    "about": "关于",
+    "howToUse": "使用指南",
+    "privacyPolicy": "隐私政策",
+    "terms": "使用条款",
+    "methodology": "计算方法",
+    "goldPrice": "金价",
+    "fearIndex": "恐慌指数",
+    "feedback": "反馈与建议",
+    "copyright": "SafeHaven Dash. All rights reserved.",
+    "today": "今日",
+    "total": "累计"
+  },
+  "feedbackWidget": {
+    "sendFeedback": "发送反馈",
+    "thankYou": "谢谢！",
+    "sentSuccess": "反馈已成功发送，感谢您的参与！",
+    "suggestion": "建议",
+    "bug": "问题",
+    "loveIt": "喜欢！",
+    "placeholderSuggestion": "您希望看到哪些改进？",
+    "placeholderBug": "出了什么问题？请描述。",
+    "placeholderLove": "您喜欢SafeHaven Dash的哪些方面？",
+    "emailPlaceholder": "邮箱（选填，用于后续联系）",
+    "sendButton": "发送反馈",
+    "sending": "发送中...",
+    "emailDirect": "或直接发邮件至 taeshinkim11@gmail.com"
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "description": "您访问的页面不存在或已被移动。",
+    "backHome": "返回仪表板"
+  }
+}

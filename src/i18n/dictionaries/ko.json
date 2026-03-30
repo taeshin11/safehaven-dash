@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "금 시세 & 안전자산 대시보드 | 실시간 공포 지수 — SafeHaven Dash",
+    "description": "금, 달러 인덱스, 스위스프랑, 엔화를 실시간으로 추적하세요. 무료 안전자산 대시보드와 라이브 공포 지수로 시장 상황을 한눈에 확인하세요."
+  },
+  "header": {
+    "title": "SafeHaven Dash"
+  },
+  "fearGauge": {
+    "title": "시장 공포 수준",
+    "subtitle": "금, 달러, 스위스프랑, 엔화 변동 기반",
+    "calm": "안정",
+    "cautious": "경계",
+    "fear": "공포",
+    "howCalculated": "어떻게 계산되나요?",
+    "hide": "숨기기",
+    "methodologyTitle": "공포 지수 산출 방법",
+    "methodologyDesc": "SafeHaven 공포 지수는 4개 안전자산 지표의 24시간 변동률을 다음 가중치로 결합합니다:",
+    "goldDesc": "금 (XAU/USD): 35% — 금 상승 = 공포 증가",
+    "dxyDesc": "달러 인덱스 (DXY): 25% — 달러 강세 = 안전자산 선호",
+    "chfDesc": "스위스프랑 강세: 20% — CHF 강세 = 공포 증가",
+    "jpyDesc": "엔화 강세: 20% — JPY 강세 = 공포 증가",
+    "scoreRange": "종합 점수는 0-100 범위로 정규화됩니다: 0-30 (안정), 31-60 (경계), 61-100 (공포).",
+    "share": "공유:"
+  },
+  "assets": {
+    "7dayTrend": "7일 추세",
+    "delayed": "지연"
+  },
+  "calculator": {
+    "title": "나만의 공포 점수 계산",
+    "subtitle": "현재 보유 중인 안전자산을 선택하여 개인화된 공포 노출도를 확인하세요.",
+    "gold": "금 (XAU/USD)",
+    "usd": "달러 인덱스 (DXY)",
+    "chf": "스위스 프랑 (CHF)",
+    "jpy": "일본 엔화 (JPY)",
+    "btc": "비트코인 (BTC)",
+    "bonds": "미국 국채",
+    "currentScore": "현재 시장 공포 점수",
+    "holdCount": "전체 {total}개 안전자산 중 {selected}개 보유 중",
+    "submit": "계산 및 기록",
+    "submitting": "제출 중...",
+    "submitted": "제출 완료!",
+    "privacyNote": "서비스 개선을 위해 익명 사용 데이터를 수집합니다. 개인정보는 저장되지 않습니다.",
+    "errorSelectOne": "최소 하나의 자산을 선택해주세요.",
+    "errorAlreadySubmitted": "이번 세션에서 이미 제출하셨습니다.",
+    "successMessage": "공포 점수가 기록되었습니다!",
+    "errorGeneric": "문제가 발생했습니다. 다시 시도해주세요."
+  },
+  "methodology": {
+    "title": "공포 지수 작동 방식",
+    "intro": "SafeHaven 공포 지수는 4개 핵심 안전자산 지표를 실시간으로 추적하여 시장 불안을 측정하는 독자적 종합 지수입니다.",
+    "componentsTitle": "구성 요소 및 가중치",
+    "goldDetail": "금 (XAU/USD) — 35%: 금은 대표적 안전자산입니다. 금값이 급등하면 시장 공포와 불확실성이 높아졌다는 신호입니다.",
+    "dxyDetail": "달러 인덱스 (DXY) — 25%: 미국 달러 인덱스는 주요 통화 대비 달러 가치를 측정합니다. 달러 강세는 안전자산 선호를 나타냅니다.",
+    "chfDetail": "스위스 프랑 (CHF) — 20%: 스위스 프랑은 세계에서 가장 안전한 통화 중 하나입니다. CHF의 달러 대비 강세는 위험 회피를 신호합니다.",
+    "jpyDetail": "일본 엔화 (JPY) — 20%: 엔화는 전통적으로 캐리 트레이드 청산과 안전자산 선호로 시장 스트레스 시 강세를 보입니다.",
+    "scoreTitle": "점수 해석",
+    "formulaTitle": "공식",
+    "disclaimer": "면책조항: 공포 지수는 정보 제공 목적으로만 사용되며 금융 자문으로 간주되어서는 안 됩니다. 과거 실적이 미래 결과를 보장하지 않습니다."
+  },
+  "footer": {
+    "disclaimer": "데이터는 정보 제공 목적으로만 제공되며 금융 자문으로 간주되어서는 안 됩니다. 가격이 지연될 수 있습니다. 투자 결정 전 항상 자체 조사를 수행하세요.",
+    "about": "소개",
+    "howToUse": "사용 방법",
+    "privacyPolicy": "개인정보처리방침",
+    "terms": "이용약관",
+    "methodology": "산출 방법",
+    "goldPrice": "금 시세",
+    "fearIndex": "공포 지수",
+    "feedback": "피드백 & 제안",
+    "copyright": "SafeHaven Dash. All rights reserved.",
+    "today": "오늘",
+    "total": "전체"
+  },
+  "feedbackWidget": {
+    "sendFeedback": "피드백 보내기",
+    "thankYou": "감사합니다!",
+    "sentSuccess": "피드백이 성공적으로 전송되었습니다. 감사합니다!",
+    "suggestion": "제안",
+    "bug": "버그",
+    "loveIt": "좋아요!",
+    "placeholderSuggestion": "어떤 점을 개선하면 좋을까요?",
+    "placeholderBug": "어떤 문제가 발생했나요? 자세히 설명해주세요.",
+    "placeholderLove": "SafeHaven Dash의 어떤 점이 좋으세요?",
+    "emailPlaceholder": "이메일 (선택사항, 후속 연락용)",
+    "sendButton": "피드백 보내기",
+    "sending": "전송 중...",
+    "emailDirect": "또는 taeshinkim11@gmail.com으로 직접 이메일을 보내주세요"
+  },
+  "notFound": {
+    "title": "페이지를 찾을 수 없습니다",
+    "description": "요청하신 페이지가 존재하지 않거나 이동되었습니다.",
+    "backHome": "대시보드로 돌아가기"
+  }
+}

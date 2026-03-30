@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useDict } from '@/i18n/DictionaryProvider';
 
 interface VisitorData {
   today: number;
@@ -8,6 +9,8 @@ interface VisitorData {
 }
 
 export function VisitorCounter() {
+  const { dict } = useDict();
+  const tf = dict.footer ?? {};
   const [data, setData] = useState<VisitorData | null>(null);
 
   useEffect(() => {
@@ -33,7 +36,7 @@ export function VisitorCounter() {
 
   return (
     <p className="mt-2 text-xs text-[#94A3B8] dark:text-[#64748B]">
-      Today: {data.today.toLocaleString()} &middot; Total: {data.total.toLocaleString()}
+      {tf.today ?? 'Today'}: {data.today.toLocaleString()} &middot; {tf.total ?? 'Total'}: {data.total.toLocaleString()}
     </p>
   );
 }

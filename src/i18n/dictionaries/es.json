@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "Precio del Oro y Panel de Activos Refugio | Indicador de Miedo en Vivo — SafeHaven Dash",
+    "description": "Rastrea oro, índice del dólar, CHF, JPY en tiempo real. Panel gratuito de activos refugio con indicador de miedo en vivo."
+  },
+  "header": {
+    "title": "SafeHaven Dash"
+  },
+  "fearGauge": {
+    "title": "Nivel de Miedo del Mercado",
+    "subtitle": "Basado en movimientos de oro, USD, CHF, JPY",
+    "calm": "Calma",
+    "cautious": "Cautela",
+    "fear": "Miedo",
+    "howCalculated": "¿Cómo se calcula?",
+    "hide": "Ocultar",
+    "methodologyTitle": "Metodología del Indicador de Miedo",
+    "methodologyDesc": "El indicador de miedo de SafeHaven combina los cambios porcentuales de 24 horas en cuatro indicadores de activos refugio con los siguientes pesos:",
+    "goldDesc": "Oro (XAU/USD): 35% — oro al alza = más miedo",
+    "dxyDesc": "Índice USD (DXY): 25% — dólar al alza = huida a la seguridad",
+    "chfDesc": "Fortaleza CHF: 20% — franco suizo al alza = más miedo",
+    "jpyDesc": "Fortaleza JPY: 20% — yen al alza = más miedo",
+    "scoreRange": "La puntuación compuesta se normaliza en una escala de 0-100: 0-30 (Calma), 31-60 (Cautela), 61-100 (Miedo).",
+    "share": "Compartir:"
+  },
+  "assets": {
+    "7dayTrend": "Tendencia 7 días",
+    "delayed": "Retrasado"
+  },
+  "calculator": {
+    "title": "Calcula tu Puntuación de Miedo",
+    "subtitle": "Selecciona los activos refugio que posees actualmente para ver tu exposición personalizada al miedo.",
+    "gold": "Oro (XAU/USD)",
+    "usd": "Índice USD (DXY)",
+    "chf": "Franco Suizo (CHF)",
+    "jpy": "Yen Japonés (JPY)",
+    "btc": "Bitcoin (BTC)",
+    "bonds": "Bonos del Tesoro de EE.UU.",
+    "currentScore": "Puntuación de Miedo Actual",
+    "holdCount": "Posees {selected} de {total} activos refugio",
+    "submit": "Calcular y Registrar",
+    "submitting": "Enviando...",
+    "submitted": "¡Enviado!",
+    "privacyNote": "Recopilamos datos de uso anónimos para mejorar el servicio. No se almacena información personal.",
+    "errorSelectOne": "Por favor selecciona al menos un activo.",
+    "errorAlreadySubmitted": "Ya has enviado en esta sesión.",
+    "successMessage": "¡Tu puntuación de miedo ha sido registrada!",
+    "errorGeneric": "Algo salió mal. Por favor, inténtalo de nuevo."
+  },
+  "methodology": {
+    "title": "Cómo Funciona el Indicador de Miedo",
+    "intro": "El Indicador de Miedo de SafeHaven es un índice compuesto propietario que mide la ansiedad del mercado rastreando cuatro indicadores clave de activos refugio en tiempo real.",
+    "componentsTitle": "Componentes y Pesos",
+    "goldDetail": "Oro (XAU/USD) — 35%: El oro es el activo refugio clásico. Cuando los precios del oro suben bruscamente, generalmente señala un aumento del miedo e incertidumbre en el mercado.",
+    "dxyDetail": "Índice USD (DXY) — 25%: El Índice del Dólar mide el dólar contra una canasta de divisas principales. Un dólar fuerte a menudo indica huida hacia la seguridad.",
+    "chfDetail": "Franco Suizo (CHF) — 20%: El franco suizo es considerado una de las monedas más seguras del mundo. El fortalecimiento del CHF contra el USD señala aversión al riesgo.",
+    "jpyDetail": "Yen Japonés (JPY) — 20%: El yen tradicionalmente se fortalece durante el estrés del mercado cuando se deshacen las operaciones de carry trade y los inversores buscan seguridad.",
+    "scoreTitle": "Interpretación de la Puntuación",
+    "formulaTitle": "Fórmula",
+    "disclaimer": "Aviso legal: El Indicador de Miedo es solo para fines informativos y no debe considerarse asesoramiento financiero. El rendimiento pasado no garantiza resultados futuros."
+  },
+  "footer": {
+    "disclaimer": "Los datos se proporcionan solo con fines informativos y no deben considerarse asesoramiento financiero. Los precios pueden tener retraso. Siempre realice su propia investigación antes de tomar decisiones de inversión.",
+    "about": "Acerca de",
+    "howToUse": "Cómo Usar",
+    "privacyPolicy": "Política de Privacidad",
+    "terms": "Términos",
+    "methodology": "Metodología",
+    "goldPrice": "Precio del Oro",
+    "fearIndex": "Índice de Miedo",
+    "feedback": "Comentarios y Sugerencias",
+    "copyright": "SafeHaven Dash. Todos los derechos reservados.",
+    "today": "Hoy",
+    "total": "Total"
+  },
+  "feedbackWidget": {
+    "sendFeedback": "Enviar Comentarios",
+    "thankYou": "¡Gracias!",
+    "sentSuccess": "Tus comentarios se enviaron correctamente. ¡Lo apreciamos!",
+    "suggestion": "Sugerencia",
+    "bug": "Error",
+    "loveIt": "¡Me encanta!",
+    "placeholderSuggestion": "¿Qué te gustaría que mejoráramos?",
+    "placeholderBug": "¿Qué salió mal? Por favor describe el problema.",
+    "placeholderLove": "¿Qué te encanta de SafeHaven Dash?",
+    "emailPlaceholder": "Email (opcional, para seguimiento)",
+    "sendButton": "Enviar Comentarios",
+    "sending": "Enviando...",
+    "emailDirect": "o envíanos un email directamente a taeshinkim11@gmail.com"
+  },
+  "notFound": {
+    "title": "Página No Encontrada",
+    "description": "La página que buscas no existe o ha sido movida.",
+    "backHome": "Volver al Panel"
+  }
+}
