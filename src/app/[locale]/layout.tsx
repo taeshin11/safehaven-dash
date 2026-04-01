@@ -40,6 +40,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         ja: '/ja',
         zh: '/zh',
         es: '/es',
+        de: '/de',
+        fr: '/fr',
+        pt: '/pt',
+        'x-default': '/en',
       },
     },
     openGraph: {
@@ -48,7 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       url: `${base}/${locale}`,
       siteName: 'SafeHaven Dash',
       type: 'website',
-      locale: locale === 'ko' ? 'ko_KR' : locale === 'ja' ? 'ja_JP' : locale === 'zh' ? 'zh_CN' : locale === 'es' ? 'es_ES' : 'en_US',
+      locale: locale === 'ko' ? 'ko_KR' : locale === 'ja' ? 'ja_JP' : locale === 'zh' ? 'zh_CN' : locale === 'es' ? 'es_ES' : locale === 'de' ? 'de_DE' : locale === 'fr' ? 'fr_FR' : locale === 'pt' ? 'pt_BR' : 'en_US',
       images: [
         {
           url: '/opengraph-image',

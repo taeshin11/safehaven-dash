@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const locales = ['en', 'ko', 'ja', 'zh', 'es'];
+const locales = ['en', 'ko', 'ja', 'zh', 'es', 'de', 'fr', 'pt'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://safehaven-dash.vercel.app';
