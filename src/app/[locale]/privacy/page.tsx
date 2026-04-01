@@ -23,7 +23,7 @@ export default function PrivacyPage() {
       <h1 className="font-[family-name:var(--font-heading)] text-3xl font-bold text-[#1E293B] dark:text-[#F1F5F9] sm:text-4xl">
         Privacy Policy
       </h1>
-      <p className="mt-2 text-sm text-[#94A3B8]">Last updated: March 29, 2026</p>
+      <p className="mt-2 text-sm text-[#94A3B8]">Last updated: March 29, 2025</p>
 
       <article className="prose-custom mt-8 space-y-6 text-[#64748B] dark:text-[#94A3B8] leading-relaxed">
         <h2 className="font-[family-name:var(--font-heading)] text-xl font-semibold text-[#1E293B] dark:text-[#F1F5F9]">

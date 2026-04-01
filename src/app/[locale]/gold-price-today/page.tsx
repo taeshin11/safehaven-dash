@@ -48,7 +48,7 @@ const jsonLd = {
     },
     {
       '@type': 'Question',
-      name: 'Is gold a good investment in 2026?',
+      name: 'Is gold a good investment in 2025?',
       acceptedAnswer: {
         '@type': 'Answer',
         text: 'Gold has historically been a strong hedge against inflation and currency devaluation. Use SafeHaven Dash to track gold alongside the USD index, CHF, and JPY to understand the current safe-haven sentiment before making investment decisions.',

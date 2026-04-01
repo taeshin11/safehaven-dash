@@ -15,7 +15,13 @@
       "Bash(mv /c/MakingApps/SafeHaven/src/app/about \"/c/MakingApps/SafeHaven/src/app/[locale]/\")",
       "Bash(mv /c/MakingApps/SafeHaven/src/app/how-to-use \"/c/MakingApps/SafeHaven/src/app/[locale]/\")",
       "Bash(mv /c/MakingApps/SafeHaven/src/app/privacy \"/c/MakingApps/SafeHaven/src/app/[locale]/\")",
-      "Bash(mv /c/MakingApps/SafeHaven/src/app/terms \"/c/MakingApps/SafeHaven/src/app/[locale]/\")"
+      "Bash(mv /c/MakingApps/SafeHaven/src/app/terms \"/c/MakingApps/SafeHaven/src/app/[locale]/\")",
+      "Bash(curl -sI \"https://safehaven-dash.vercel.app/\" -H \"Accept-Language: ko-KR,ko;q=0.9\")",
+      "Bash(curl -sI \"https://safehaven-dash.vercel.app/\" -H \"Accept-Language: en-US,en;q=0.9\")",
+      "Bash(curl -I https://safehaven-dash.vercel.app)",
+      "Bash(wc -l /c/MakingApps/SafeHaven/src/i18n/dictionaries/*.json)",
+      "Bash(curl -I https://safehaven-dash.vercel.app/en)",
+      "Bash(ls -la /c/MakingApps/SafeHaven/src/app/[locale]/)"
     ]
   }
 }
