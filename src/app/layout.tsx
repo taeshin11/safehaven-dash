@@ -67,6 +67,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <meta name="naver-site-verification" content="ec80d3fc3cbf98d930ae0a8aa4c7a6276e438013" />
         <link rel="preconnect" href="https://api.frankfurter.dev" />
         <link rel="dns-prefetch" href="https://api.frankfurter.dev" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
